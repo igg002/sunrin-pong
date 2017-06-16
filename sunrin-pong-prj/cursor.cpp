@@ -16,8 +16,15 @@ int main(){
 
 	while (true){
 		system("cls");
+
 		cout << GetUpdateCursorPos(hwnd, p) << endl;
 		cout << GetNormalizedCursorPos(hwnd, p) << endl;
-		cout << GetCursorPosByRow(hwnd, p, 30) << endl;
+		cout << GetCursorPosByRow(hwnd, p, 30) << endl << endl;
+
+		cout << GetUpdateCursorPos(hwnd, p, 12) << endl;
+		cout << GetNormalizedCursorPos(hwnd, p, 12) << endl;
+		cout << GetCursorPosByRow(hwnd, p, 30, 12) << endl;
+
+		// Classify, Cleanup
 	}
 }
