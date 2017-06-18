@@ -17,6 +17,7 @@ using namespace std;
 void CheckBallCollision();
 void CheckScore();
 void ResetGame();
+void Victory(cPaddle winner);
 
 
 HWND hwnd;
