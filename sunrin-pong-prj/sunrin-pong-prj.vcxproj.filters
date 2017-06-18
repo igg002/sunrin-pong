@@ -51,6 +51,9 @@
     <ClInclude Include="cTransform.h">
       <Filter>Source Files\Componenets</Filter>
     </ClInclude>
+    <ClInclude Include="cVector2.h">
+      <Filter>Source Files\Componenets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">

@@ -30,9 +30,22 @@ void Update() {
 	SetWindowsSize(hwnd, 500, 500);
 
 	cout << "Get Console Window Height : " << GetConsoleWindowHeight(hwnd) << endl;
+	cout << "Get Console Window Width : " << GetConsoleWindowWidth(hwnd) << endl;
 	cout << "Get Console Window Titlebar Height : " << GetConsoleWindowTitlebarHeight() << endl;
 	cout << "Get Cursor Y Position : " << GetCursorYPos(hwnd, p, 12) << endl;
+	cout << "Get Cursor X Position : " << GetCursorXPos(hwnd, p, 12) << endl;
 	cout << "Get Normalized Cursor Y Position : " << GetNormalizedCursorYPos(hwnd, p) << endl;
+	cout << "Get Normalized Cursor X Position : " << GetNormalizedCursorXPos(hwnd, p) << endl;
+
+	cGameObject boxGameObject = cGameObject();
+	boxGameObject.SetShape("[X]");
+	boxGameObject.transform.SetTransform(cVector2(10, 10));
+	boxGameObject.transform.Translate(cVector2(1, 0));
+	boxGameObject.Draw();
+
+	cPaddle paddle = cPaddle(5);
+	paddle.transform.SetTransform(cVector2(20, 10));
+	paddle.Draw();
 
 	SetCursor(false);
 	ClearScreen();

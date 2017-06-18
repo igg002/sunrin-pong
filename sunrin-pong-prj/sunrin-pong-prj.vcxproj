@@ -148,6 +148,7 @@
     <ClInclude Include="cManager.h" />
     <ClInclude Include="cPaddle.h" />
     <ClInclude Include="cTransform.h" />
+    <ClInclude Include="cVector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
