@@ -3,7 +3,7 @@
 
 class cTransform {
 public:
-	int x, y;
+	float x, y;
 
 	void Translate(cVector2 vector2) {
 		this->x += vector2.x;
@@ -11,7 +11,9 @@ public:
 	}
 
 	void SetTransform(cVector2 vector2) {
-		this->x = vector2.x;
-		this->y = vector2.y;
+		if (!(vector2.x < 0 || vector2.y < 0)) {
+			this->x = vector2.x;
+			this->y = vector2.y;
+		}
 	}
 };

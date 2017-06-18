@@ -1,5 +1,6 @@
 #pragma once
 #include<Windows.h>
+#include"cGeneral.h"
 using namespace std;
 
 
@@ -20,6 +21,8 @@ int GetCursorYPos(HWND hwnd, POINT p, int subt);
 int GetCursorXPos(HWND hwnd, POINT p, int subt);
 float GetNormalizedCursorYPos(HWND hwnd, POINT p, int subt);
 float GetNormalizedCursorXPos(HWND hwnd, POINT p, int subt);
+int GetCursorRowPos(HWND hwnd, POINT p, int subt);
+int GetCursorColPos(HWND hwnd, POINT p, int subt);
 
 // Returns the height of the console window
 int GetConsoleWindowHeight(HWND hwnd) {
@@ -70,3 +73,25 @@ float GetNormalizedCursorYPos(HWND hwnd, POINT p, int subt = 12) {
 float GetNormalizedCursorXPos(HWND hwnd, POINT p, int subt = 12) {
 	return (float)GetCursorXPos(hwnd, p, subt) / (float)(GetConsoleWindowWidth(hwnd) - subt);
 }
+
+// Returns the row that the cursor is pointing
+int GetCursorRowPos(HWND hwnd, POINT p, int subt = 0) {
+	return GetConsoleSizeRow() * GetNormalizedCursorYPos(hwnd, p) - subt;
+}
+
+// Returns the column that the cursor is pointing
+int GetCursorColPos(HWND hwnd, POINT p, int subt = 0) {
+	return GetConsoleSizeCol() * GetNormalizedCursorXPos(hwnd, p) - subt;
+}
+
+/*cout << "Get Console Window Height : " << GetConsoleWindowHeight(hwnd) << endl;
+cout << "Get Console Window Width : " << GetConsoleWindowWidth(hwnd) << endl;
+cout << "Get Console Window Size by Row : " << GetConsoleSizeRow() << endl;
+cout << "Get Console Window Size by Column : " << GetConsoleSizeCol() << endl;
+cout << "Get Console Window Titlebar Height : " << GetConsoleWindowTitlebarHeight() << endl;
+cout << "Get Cursor Y Position : " << GetCursorYPos(hwnd, p, 12) << endl;
+cout << "Get Cursor X Position : " << GetCursorXPos(hwnd, p, 12) << endl;
+cout << "Get Normalized Cursor Y Position : " << GetNormalizedCursorYPos(hwnd, p) << endl;
+cout << "Get Normalized Cursor X Position : " << GetNormalizedCursorXPos(hwnd, p) << endl;
+cout << "Get Cursor Pointing Row : " << GetCursorRowPos(hwnd, p) << endl;
+cout << "Get Cursor Pointing Column : " << GetCursorColPos(hwnd, p) << endl;*/

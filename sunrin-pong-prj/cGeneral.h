@@ -11,6 +11,8 @@ typedef enum { NOCURSOR, SOLIDCURSOR, NORMALCURSOR } CURSOR_TYPE;
 int RandIntRange(int x, int y);
 void SetCursorType(CURSOR_TYPE c);
 void SetCursor(bool bVisible);
+int GetConsoleSizeRow();
+int GetConsoleSizeCol();
 
 // Random integer value in range
 int RandIntRange(int x, int y) {
@@ -54,4 +56,26 @@ void SetCursor(bool bVisible){
 	ConsoleCursor.bVisible = false;
 	ConsoleCursor.dwSize = 1;
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &ConsoleCursor); // ¼³Á¤
+}
+
+// Returns console row size
+int GetConsoleSizeRow() {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int rows;
+
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+
+	return rows;
+}
+
+// Returns console column size
+int GetConsoleSizeCol() {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int columns;
+
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+	return columns;
 }
