@@ -139,11 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Mouse.h" />
+    <ClInclude Include="cBall.h" />
+    <ClInclude Include="cConsole.h" />
+    <ClInclude Include="cGeneral.h" />
+    <ClInclude Include="cGraphics.h" />
+    <ClInclude Include="cInput.h" />
+    <ClInclude Include="cManager.h" />
+    <ClInclude Include="cPaddle.h" />
     <ClInclude Include="System.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cursor.cpp" />
+    <ClCompile Include="game.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
