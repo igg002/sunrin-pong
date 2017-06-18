@@ -7,12 +7,17 @@ using namespace std;
 
 
 void ClearScreen();
+void ClearScreenDoubleBuffer();
 void SetConsoleByCommand(int cols, int lines);
 void DrawStageEdge(int mapHeight, int mapWidth);
 void SetWindowsSize(HWND hwnd, int height, int width);
 
 // Clear Screen
 void ClearScreen() { system("cls"); }
+
+void ClearScreenDoubleBuffer() {
+
+}
 
 // Set console size by columns and rows
 void SetConsoleByCommand(int cols, int lines) {

@@ -24,8 +24,8 @@ POINT p;
 
 cManager manager = cManager();
 cBall ball = cBall();
-cPaddle cursorPaddleP1 = cPaddle(9);
-cPaddle cursorPaddleP2 = cPaddle(9);
+cPaddle cursorPaddleP1 = cPaddle(9, "Player One");
+cPaddle cursorPaddleP2 = cPaddle(9, "Player Two");
 cGameObject P1ScoreUI = cGameObject();
 cGameObject P2ScoreUI = cGameObject();
 
@@ -160,7 +160,11 @@ void ResetGame() {
 	ball.SetRandomBallDirection();
 }
 
+void Victory(cPaddle winner) { cout << winner.gameObjectName << " Victory!" << endl; }
+
 void main() {
 	Start();
 	while (!manager.isQuit) Update();
+	if (manager.p1Score == manager.gameOverScore) { Victory(cursorPaddleP1); }
+	else { Victory(cursorPaddleP2); }
 }
