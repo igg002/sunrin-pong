@@ -9,6 +9,7 @@ using namespace std;
 void ClearScreen();
 void SetConsoleByCommand(int cols, int lines);
 void DrawStageEdge(int mapHeight, int mapWidth);
+void SetWindowsSize(HWND hwnd, int height, int width);
 
 // Clear Screen
 void ClearScreen() { system("cls"); }
@@ -29,4 +30,10 @@ void DrawStageEdge(int mapHeight, int mapWidth) {
 		}
 		printf("\n");
 	}
+}
+
+void SetWindowsSize(HWND hwnd, int height, int width) {
+	RECT r;
+	GetWindowRect(hwnd, &r);
+	MoveWindow(hwnd, r.left, r.top, width, height, TRUE);
 }

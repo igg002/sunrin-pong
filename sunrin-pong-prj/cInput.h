@@ -14,12 +14,11 @@ using namespace std;
 
 
 int GetConsoleWindowHeight(HWND hwnd);
-int GetUpdateCursorPos(HWND hwnd, POINT p, int subt);
-int GetConsoleWindowTitleBarHeight();
-float GetNormalizedCursorPos(HWND hwnd, POINT p, int subt);
-int GetCursorPosByRow(HWND hwnd, POINT p, int minRow, int maxRow, int subt);
+int GetConsoleWindowTitlebarHeight();
+int GetCursorYPos(HWND hwnd, POINT p, int subt);
+float GetNormalizedCursorYPos(HWND hwnd, POINT p, int subt);
 
-
+// Returns the height of the console window
 int GetConsoleWindowHeight(HWND hwnd) {
 	RECT rect;
 	GetWindowRect(hwnd, &rect);
@@ -27,24 +26,22 @@ int GetConsoleWindowHeight(HWND hwnd) {
 	return height;
 }
 
-int GetUpdateCursorPos(HWND hwnd, POINT p, int subt = 0) {
-	GetCursorPos(&p); ScreenToClient(hwnd, &p);
-
-	if (p.y >= 0 && p.y <= GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitleBarHeight() - subt) { return p.y; }
-	else if (p.y < 0) { return 0; }
-	else { return GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitleBarHeight() - subt; }
-}
-
-int GetConsoleWindowTitleBarHeight() {
+// Returns the height of the title bar
+int GetConsoleWindowTitlebarHeight() {
 	int nCaptionHeight = ::GetSystemMetrics(SM_CYCAPTION);
 	return nCaptionHeight;
 }
 
-float GetNormalizedCursorPos(HWND hwnd, POINT p, int subt = 0) {
-	return (float)GetUpdateCursorPos(hwnd, p, subt) / (float)(GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitleBarHeight() - subt);
+// Returns the y position of cursor - subt
+int GetCursorYPos(HWND hwnd, POINT p, int subt = 12) {
+	GetCursorPos(&p); ScreenToClient(hwnd, &p);
+
+	if (p.y >= 0 && p.y <= GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitlebarHeight() - subt) { return p.y; }
+	else if (p.y < 0) { return 0; }
+	else { return GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitlebarHeight() - subt; }
 }
 
-int GetCursorPosByRow(HWND hwnd, POINT p, int minRow, int maxRow, int subt = 0) {
-	if (maxRow * GetNormalizedCursorPos(hwnd, p, subt) < minRow) { return minRow; }
-	else return maxRow * GetNormalizedCursorPos(hwnd, p, subt);
+// Returns the y position of cursor - subt normalized between 0, 1
+float GetNormalizedCursorYPos(HWND hwnd, POINT p, int subt = 12) {
+	return (float)GetCursorYPos(hwnd, p, subt) / (float)(GetConsoleWindowHeight(hwnd) - GetConsoleWindowTitlebarHeight() - subt);
 }

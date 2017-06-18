@@ -141,12 +141,13 @@
   <ItemGroup>
     <ClInclude Include="cBall.h" />
     <ClInclude Include="cConsole.h" />
+    <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cGeneral.h" />
     <ClInclude Include="cGraphics.h" />
     <ClInclude Include="cInput.h" />
     <ClInclude Include="cManager.h" />
     <ClInclude Include="cPaddle.h" />
-    <ClInclude Include="System.h" />
+    <ClInclude Include="cTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">

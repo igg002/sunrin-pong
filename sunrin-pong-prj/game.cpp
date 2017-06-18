@@ -1,9 +1,16 @@
 #include<iostream>
-#include<stdlib.h>
 #include<Windows.h>
 #include"cInput.h"
+#include"cConsole.h"
 #include"cGeneral.h"
 #include"cGraphics.h"
+#include"cGameObject.h"
+#include"cTransform.h"
+#include"cVector2.h"
+#include"cBall.h"
+#include"cPaddle.h"
+#include"cManager.h"
+using namespace std;
 
 
 #define MAPSIZEY 30
@@ -16,38 +23,22 @@
 #define PADSIZE 7
 
 
-using namespace std;
-
-
-bool quit;
-int gameMap[MAPSIZEY][MAPSIZEX];
-
-void UpdateGameMap(HWND hwnd, POINT p) {
-	for (int i = 0; i < MAPSIZEY; i++) {
-		for (int j = 0; j < MAPSIZEX; j++) {
-			if ((j == PLAYERONEPADX || j == PLAYERTWOPADX) && (i == GetCursorPosByRow(hwnd, p, ACTIVEMAPMINY, ACTIVEMAPMAXY, REDUCEDMAPVALUE))) { gameMap[i][j] = 1; }
-			else { gameMap[i][j] = 0; }
-		}
-	}
-}
-
-void Quit() {
-	quit = true;
-}
-
 void Update() {
 	HWND hwnd = GetConsoleWindow();
-	POINT p; p.x = p.y = 0;
+	POINT p; p.x = 0; p.y = 0;
 
-	/*UpdateGameMap(hwnd, p);
-	for (int i = 0; i < MAPSIZEY; i++) {
-		for (int j = 0; j < MAPSIZEX; j++) {
-			gotoxy(j, i); printf("%d", gameMap[i][j]);
-		}
-		printf("\n");
-	}*/
+	SetWindowsSize(hwnd, 500, 500);
+
+	cout << "Get Console Window Height : " << GetConsoleWindowHeight(hwnd) << endl;
+	cout << "Get Console Window Titlebar Height : " << GetConsoleWindowTitlebarHeight() << endl;
+	cout << "Get Cursor Y Position : " << GetCursorYPos(hwnd, p, 12) << endl;
+	cout << "Get Normalized Cursor Y Position : " << GetNormalizedCursorYPos(hwnd, p) << endl;
+
+	SetCursor(false);
+	ClearScreen();
 }
 
 void main() {
-	while (!quit) Update();
+	cManager manager = cManager();
+	while (!manager.isQuit) Update();
 }
