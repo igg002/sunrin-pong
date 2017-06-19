@@ -22,14 +22,14 @@
     <Filter Include="Source Files\Componenets">
       <UniqueIdentifier>{e5cc50e0-58d1-428b-8c3e-8547a2b2e673}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ConsoleLibrary">
+      <UniqueIdentifier>{ddc03351-f7bb-4d0a-92aa-88636a5b4529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameLibrary">
+      <UniqueIdentifier>{6243d21e-2a3a-4b36-80f4-b1243e1f206c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cPaddle.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
@@ -39,12 +39,6 @@
     <ClInclude Include="cManager.h">
       <Filter>Source Files\GameSystems</Filter>
     </ClInclude>
-    <ClInclude Include="cConsole.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cGeneral.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cGameObject.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
@@ -53,6 +47,18 @@
     </ClInclude>
     <ClInclude Include="cVector2.h">
       <Filter>Source Files\Componenets</Filter>
+    </ClInclude>
+    <ClInclude Include="cConsole.h">
+      <Filter>Source Files\ConsoleLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cGeneral.h">
+      <Filter>Source Files\ConsoleLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cGraphics.h">
+      <Filter>Source Files\ConsoleLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cInput.h">
+      <Filter>Source Files\ConsoleLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

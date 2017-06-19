@@ -79,3 +79,7 @@ int GetConsoleSizeCol() {
 
 	return columns;
 }
+
+void WaitForSeconds(int seconds) {
+	Sleep(seconds * 1000);
+}

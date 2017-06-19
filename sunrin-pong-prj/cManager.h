@@ -13,4 +13,5 @@ public:
 	void Quit() { this->isQuit = true; }
 	void SetGameOverScore(int score) { this->gameOverScore = score; }
 	void SetBallSpeed(float speed) { this->ballSpeed = speed; }
+	void Victory(cPaddle winner) { cout << winner.gameObjectName << " Victory!" << endl; }
 };
