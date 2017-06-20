@@ -30,7 +30,6 @@ int RandIntRange(int x, int y) {
 
 // Random float value in range
 float RandFloatRange(float x, float y) {
-	srand((int)time(NULL));
 	return ((y - x)*((float)rand() / RAND_MAX)) + x;
 }
 

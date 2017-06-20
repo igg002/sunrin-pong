@@ -4,6 +4,7 @@
 #include"GameLibrary.h"
 #include"ConsoleLibrary.h"
 #include"GameSystems.h"
+#include"AI.h"
 using namespace std;
 
 
@@ -19,16 +20,21 @@ using namespace std;
 #define MIN_PAD_SIZE 1
 #define MAX_PAD_SIZE 10
 
-#define MIN_WINDOW_X 200
+#define MIN_WINDOW_X 400
 #define MAX_WINDOW_X 800
-#define MIN_WINDOW_Y 200
+#define MIN_WINDOW_Y 400
 #define MAX_WINDOW_Y 800
 
 #define INTIAL_BALL_SPEED 0.1
 #define MIN_BALL_SPEED 0.1
-#define MAX_BALL_SPEED 0.8
+#define MAX_BALL_SPEED 0.2
 
-#define DELAY 0.25
+#define MIN_BALL_DEGREE 0.4
+#define MAX_BALL_DEGREE 2.1
+
+#define MOVEMENT_SPEED 1
+
+#define DELAY 0
 
 
 HWND hwnd;
@@ -38,6 +44,8 @@ cPongManager m_manager = cPongManager(11);
 cConsoleWindow m_Window = cConsoleWindow(hwnd, p);
 
 cBall ball;
+
+PongAI ai;
 
 cPaddle P1Paddle = cPaddle(INITIAL_PAD_SIZE, "Player One");
 cPaddle P2Paddle = cPaddle(INITIAL_PAD_SIZE, "Player Two");
@@ -80,8 +88,13 @@ void Initialize() {
 
 void Update() {
 	// Input, Update
+
 	P1Paddle.transform.SetTransform(cVector2(GetCursorColPos(hwnd, p, P1Paddle.transform.size.x), 1));
-	P2Paddle.transform.SetTransform(cVector2(GetCursorColPos(hwnd, p, P2Paddle.transform.size.x), GetConsoleSizeRow() - 1));
+
+	//P2Paddle.transform.SetTransform(cVector2(GetCursorColPos(hwnd, p, P2Paddle.transform.size.x), GetConsoleSizeRow() - 1));
+	P2Paddle.transform.SetTransform(cVector2(P2Paddle.transform.position.x, GetConsoleSizeRow() - 1));
+	if (GetKeyState('D') & 0x8000 && P2Paddle.transform.position.x < (GetConsoleSizeCol() - P2Paddle.transform.size.x)) { P2Paddle.transform.Translate(cVector2(MOVEMENT_SPEED, 0)); }
+	if (GetKeyState('A') & 0x8000 && P2Paddle.transform.position.x > 0) { P2Paddle.transform.Translate(cVector2(-MOVEMENT_SPEED, 0)); }
 
 	leftWall.transform.SetTransform(cVector2(0, 0));
 	rightWall.transform.SetTransform(cVector2(GetConsoleSizeCol(), 0));
@@ -114,7 +127,7 @@ void Update() {
 			break;
 		}
 		P1Paddle.UpdateLength(RandIntRange(MIN_PAD_SIZE, MAX_PAD_SIZE));
-		ball.ballDegree = RandFloatRange(1.0, 6.0);
+		ball.ballDegree = RandFloatRange(MIN_BALL_DEGREE, MAX_BALL_DEGREE);
 		WaitForSeconds(DELAY);
 	}
 
@@ -131,7 +144,7 @@ void Update() {
 			break;
 		}
 		P2Paddle.UpdateLength(RandIntRange(MIN_PAD_SIZE, MAX_PAD_SIZE));
-		ball.ballDegree = RandFloatRange(1.0, 6.0);
+		ball.ballDegree = RandFloatRange(MIN_BALL_DEGREE, MAX_BALL_DEGREE);
 		WaitForSeconds(DELAY);
 	}
 
