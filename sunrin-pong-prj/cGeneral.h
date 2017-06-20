@@ -87,6 +87,6 @@ int GetConsoleSizeCol() {
 }
 
 // Wait for Seconds
-void WaitForSeconds(int seconds) {
+void WaitForSeconds(float seconds) {
 	Sleep(seconds * 1000);
 }

@@ -9,7 +9,7 @@ class cBall : public cGameObject{
 public:
 	BALLDIRECTION ballDirection;
 	float ballSpeed;
-	float ballDegree = 0;
+	float ballDegree = 1;
 
 	void SetRandomBallDirection() {
 		srand((unsigned int)time(NULL));
@@ -34,19 +34,19 @@ public:
 			this->transform.Translate(cVector2(0, -this->ballSpeed));
 			break;
 		case(UPPER_LEFT):
-			this->transform.Translate(cVector2(-this->ballSpeed, -this->ballSpeed));
+			this->transform.Translate(cVector2(-this->ballSpeed * this->ballDegree, -this->ballSpeed / this->ballDegree));
 			break;
 		case(UPPER_RIGHT):
-			this->transform.Translate(cVector2(this->ballSpeed, -this->ballSpeed));
+			this->transform.Translate(cVector2(this->ballSpeed * this->ballDegree, -this->ballSpeed / this->ballDegree));
 			break;
 		case(LOWER_STRAIGHT):
 			this->transform.Translate(cVector2(0, this->ballSpeed));
 			break;
 		case(LOWER_LEFT):
-			this->transform.Translate(cVector2(-this->ballSpeed, this->ballSpeed));
+			this->transform.Translate(cVector2(-this->ballSpeed * this->ballDegree, this->ballSpeed / this->ballDegree));
 			break;
 		case(LOWER_RIGHT):
-			this->transform.Translate(cVector2(this->ballSpeed, this->ballSpeed));
+			this->transform.Translate(cVector2(this->ballSpeed * this->ballDegree, this->ballSpeed / this->ballDegree));
 			break;
 		}
 	}

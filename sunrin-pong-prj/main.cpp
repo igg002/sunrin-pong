@@ -26,7 +26,9 @@ using namespace std;
 
 #define INTIAL_BALL_SPEED 0.1
 #define MIN_BALL_SPEED 0.1
-#define MAX_BALL_SPEED 0.5
+#define MAX_BALL_SPEED 0.8
+
+#define DELAY 0.25
 
 
 HWND hwnd;
@@ -112,6 +114,8 @@ void Update() {
 			break;
 		}
 		P1Paddle.UpdateLength(RandIntRange(MIN_PAD_SIZE, MAX_PAD_SIZE));
+		ball.ballDegree = RandFloatRange(1.0, 6.0);
+		WaitForSeconds(DELAY);
 	}
 
 	if (P2Paddle.CheckCollision(ball)) {
@@ -127,6 +131,8 @@ void Update() {
 			break;
 		}
 		P2Paddle.UpdateLength(RandIntRange(MIN_PAD_SIZE, MAX_PAD_SIZE));
+		ball.ballDegree = RandFloatRange(1.0, 6.0);
+		WaitForSeconds(DELAY);
 	}
 
 	if (leftWall.CheckCollision(ball) || rightWall.CheckCollision(ball)) {

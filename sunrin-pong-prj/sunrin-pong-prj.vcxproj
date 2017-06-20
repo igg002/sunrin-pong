@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
     <ClInclude Include="cBall.h" />
     <ClInclude Include="cConsole.h" />
     <ClInclude Include="cConsoleWindow.h" />
