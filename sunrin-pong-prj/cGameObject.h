@@ -43,12 +43,4 @@ public:
 		}
 		else return false;
 	}
-
-	cGameObject ReturnCollisionObject(cGameObject other) {
-		if (other.canCollide && this->canCollide) {
-			if (other.transform.position.y == this->transform.position.y && other.transform.position.x >= this->transform.size.x && other.transform.position.x <= this->transform.size.x) {
-				return other;
-			}
-		}
-	}
 };
