@@ -13,14 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\GameObjects">
-      <UniqueIdentifier>{6df4dbc9-de0b-4aea-b216-aa41be5fc613}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameSystems">
       <UniqueIdentifier>{b608750f-7520-48fc-b08e-1e5e7940eabd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Componenets">
-      <UniqueIdentifier>{e5cc50e0-58d1-428b-8c3e-8547a2b2e673}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\ConsoleLibrary">
       <UniqueIdentifier>{ddc03351-f7bb-4d0a-92aa-88636a5b4529}</UniqueIdentifier>
@@ -28,25 +22,16 @@
     <Filter Include="Source Files\GameLibrary">
       <UniqueIdentifier>{6243d21e-2a3a-4b36-80f4-b1243e1f206c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameLibrary\GameObjects">
+      <UniqueIdentifier>{6df4dbc9-de0b-4aea-b216-aa41be5fc613}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cPaddle.h">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\GameLibrary\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="cBall.h">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="cManager.h">
-      <Filter>Source Files\GameSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="cGameObject.h">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="cTransform.h">
-      <Filter>Source Files\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="cVector2.h">
-      <Filter>Source Files\Componenets</Filter>
+      <Filter>Source Files\GameLibrary\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="cConsole.h">
       <Filter>Source Files\ConsoleLibrary</Filter>
@@ -60,9 +45,33 @@
     <ClInclude Include="cInput.h">
       <Filter>Source Files\ConsoleLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="cTransform.h">
+      <Filter>Source Files\GameLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cVector2.h">
+      <Filter>Source Files\GameLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameObject.h">
+      <Filter>Source Files\GameLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleLibrary.h">
+      <Filter>Source Files\ConsoleLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLibrary.h">
+      <Filter>Source Files\GameLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="cPongManager.h">
+      <Filter>Source Files\GameSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="cConsoleWindow.h">
+      <Filter>Source Files\GameSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystems.h">
+      <Filter>Source Files\GameSystems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -28,6 +28,12 @@ int RandIntRange(int x, int y) {
 	return tmp;
 }
 
+// Random float value in range
+float RandFloatRange(float x, float y) {
+	srand((int)time(NULL));
+	return ((y - x)*((float)rand() / RAND_MAX)) + x;
+}
+
 // Sets cursor visible type by CURSOR_TYPE
 void SetCursorType(CURSOR_TYPE c){
 	CONSOLE_CURSOR_INFO cursorInfo;
@@ -80,6 +86,7 @@ int GetConsoleSizeCol() {
 	return columns;
 }
 
+// Wait for Seconds
 void WaitForSeconds(int seconds) {
 	Sleep(seconds * 1000);
 }

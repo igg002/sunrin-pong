@@ -8,6 +8,8 @@ enum BALLDIRECTION { UPPER_STRAIGHT, UPPER_RIGHT, UPPER_LEFT, LOWER_STRAIGHT, LO
 class cBall : public cGameObject{
 public:
 	BALLDIRECTION ballDirection;
+	float ballSpeed;
+	float ballDegree = 0;
 
 	void SetRandomBallDirection() {
 		srand((unsigned int)time(NULL));
@@ -16,5 +18,36 @@ public:
 
 	void SetBallDirection(BALLDIRECTION direction) {
 		this->ballDirection = direction;
+	}
+
+	void SetBallSpeed(float speed) {
+		this->ballSpeed = speed;
+	}
+
+	void SetBallDegree(float degree) {
+		this->ballDegree = degree;
+	}
+
+	void MoveToDirection() {
+		switch (this->ballDirection) {
+		case(UPPER_STRAIGHT):
+			this->transform.Translate(cVector2(0, -this->ballSpeed));
+			break;
+		case(UPPER_LEFT):
+			this->transform.Translate(cVector2(-this->ballSpeed, -this->ballSpeed));
+			break;
+		case(UPPER_RIGHT):
+			this->transform.Translate(cVector2(this->ballSpeed, -this->ballSpeed));
+			break;
+		case(LOWER_STRAIGHT):
+			this->transform.Translate(cVector2(0, this->ballSpeed));
+			break;
+		case(LOWER_LEFT):
+			this->transform.Translate(cVector2(-this->ballSpeed, this->ballSpeed));
+			break;
+		case(LOWER_RIGHT):
+			this->transform.Translate(cVector2(this->ballSpeed, this->ballSpeed));
+			break;
+		}
 	}
 };
